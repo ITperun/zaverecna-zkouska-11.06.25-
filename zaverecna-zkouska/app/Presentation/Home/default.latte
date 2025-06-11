@@ -1,0 +1,45 @@
+{block content}
+
+<h1>Seznam aut</h1>
+
+{control carForm}
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid black;
+        padding: 5px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f0f0f0;
+    }
+</style>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Nazev</th>
+        <th>Vykon</th>
+        <th>Prodejna</th>
+        <th>Popis</th>
+        <th>Editovat</th>
+    </tr>
+    {foreach $cars as $car}
+    <tr>
+        <td>{$car->id}</td>
+        <td>{$car->name}</td>
+        <td>{$car->performance} kW</td>
+        <td>{$car->store->name}</td>
+        <td>{$car->description}</td>
+        <td><a n:href="edit id => $car->id">Upravit</a></td>
+    </tr>
+    {/foreach}
+</table>
+
+{/block}
